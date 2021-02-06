@@ -38,7 +38,13 @@ module.exports = function(api) {
       '@babel/preset-react'
     ].filter(Boolean),
     plugins: [
-      'relay',
+      [
+        '@babel/plugin-transform-modules-commonjs',
+        {
+          allowTopLevelThis: true
+        }
+      ],
+      'babel-plugin-relay',
       'babel-plugin-macros',
       '@babel/plugin-syntax-dynamic-import',
       isTestEnv && 'babel-plugin-dynamic-import-node',
