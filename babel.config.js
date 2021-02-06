@@ -38,6 +38,7 @@ module.exports = function(api) {
       '@babel/preset-react'
     ].filter(Boolean),
     plugins: [
+      'relay',
       'babel-plugin-macros',
       '@babel/plugin-syntax-dynamic-import',
       isTestEnv && 'babel-plugin-dynamic-import-node',
