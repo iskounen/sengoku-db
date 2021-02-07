@@ -11,7 +11,7 @@ const PersonSchema = Yup.object().shape({
   death: Yup.string().required('Required')
 })
 
-const PeopleNew = () => (
+export const PeopleNew = () => (
   <div>
     <h1>People</h1>
     <h2>New</h2>
