@@ -1,7 +1,11 @@
+import React from 'react'
 import { PeopleNew } from './people_new'
+import { render, screen } from '@testing-library/react'
 
 describe(PeopleNew, () => {
-  it('returns true', () => {
-    expect(true).toBe(true)
+  it('has a submit button', () => {
+    render(<PeopleNew />)
+
+    expect(screen.getByRole('button').textContent).toEqual('Submit')
   })
 })
