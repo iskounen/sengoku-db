@@ -11,7 +11,7 @@ const PersonSchema = Yup.object().shape({
   death: Yup.string().required('Required')
 })
 
-export const PeopleNew = () => (
+export const PeopleNew = (props) => (
   <div>
     <h1>People</h1>
     <h2>New</h2>
@@ -20,7 +20,7 @@ export const PeopleNew = () => (
       initialValues={{ name: '', birth: '', death: '' }}
       validationSchema={PersonSchema}
       onSubmit={(values, actions) => {
-        commitMutation(environment, {
+        commitMutation(props.environment, {
           mutation: graphql`
             mutation peopleNewMutation($name: String!, $birth: ISO8601Date!, $death: ISO8601Date!) {
               createPerson(input: {
@@ -41,11 +41,10 @@ export const PeopleNew = () => (
             death: values.death
           },
           onCompleted: (response, errors) => {
+            actions.setSubmitting(false)
             if (errors) {
-              actions.setSubmitting(false)
               actions.setStatus(errors.map(e => e.message))
             } else {
-              actions.setSubmitting(false)
               actions.setStatus([response.createPerson.person.name])
             }
           },
@@ -84,7 +83,7 @@ export const PeopleNew = () => (
               Submit
             </button>
           </div>
-          {status && <div><ul>{status.map((item, index) => <li key={index}>{item}</li>)}</ul></div>}
+          {status && <div role="alert"><ul>{status.map((item, index) => <li key={index}>{item}</li>)}</ul></div>}
         </Form>
       )}
     </Formik>
@@ -93,7 +92,7 @@ export const PeopleNew = () => (
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <PeopleNew />,
+    <PeopleNew environment={environment} />,
     document.body.appendChild(document.createElement('div')),
   )
 })
