@@ -5,10 +5,10 @@ import * as Yup from 'yup'
 import { commitMutation, graphql } from 'react-relay'
 import environment from './relay_environment'
 
-const PersonSchema = Yup.object().shape({
-  name: Yup.string().required('Required'),
-  birth: Yup.string().required('Required'),
-  death: Yup.string().required('Required')
+export const PersonSchema = Yup.object().shape({
+  name: Yup.string().required('name required'),
+  birth: Yup.string().required('birth date required'),
+  death: Yup.string().required('death date required')
 })
 
 export const PeopleNew = (props) => (
