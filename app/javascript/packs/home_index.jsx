@@ -1,5 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react"
+import ReactDOM from "react-dom"
 
 const HomeIndex = () => (
   <div>
@@ -8,9 +8,9 @@ const HomeIndex = () => (
   </div>
 )
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
     <HomeIndex />,
-    document.body.appendChild(document.createElement('div')),
+    document.body.appendChild(document.createElement("div")),
   )
 })

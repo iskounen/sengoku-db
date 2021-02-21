@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
-import { commitMutation, graphql } from 'react-relay'
-import environment from './relay_environment'
+import React from "react"
+import ReactDOM from "react-dom"
+import { Formik, Form, Field, ErrorMessage } from "formik"
+import * as Yup from "yup"
+import { commitMutation, graphql } from "react-relay"
+import environment from "./relay_environment"
 
 export const PersonSchema = Yup.object().shape({
-  name: Yup.string().required('name required'),
-  birth: Yup.string().required('birth date required'),
-  death: Yup.string().required('death date required')
+  name: Yup.string().required("name required"),
+  birth: Yup.string().required("birth date required"),
+  death: Yup.string().required("death date required")
 })
 
 export const PeopleNew = (props) => (
@@ -17,7 +17,7 @@ export const PeopleNew = (props) => (
     <h2>New</h2>
 
     <Formik
-      initialValues={{ name: '', birth: '', death: '' }}
+      initialValues={{ name: "", birth: "", death: "" }}
       validationSchema={PersonSchema}
       onSubmit={(values, actions) => {
         commitMutation(props.environment, {
@@ -54,7 +54,7 @@ export const PeopleNew = (props) => (
           }
         })
       }}
-     >
+    >
       {({ isSubmitting, status }) => (
         <Form>
           <div>
@@ -90,9 +90,9 @@ export const PeopleNew = (props) => (
   </div>
 )
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
     <PeopleNew environment={environment} />,
-    document.body.appendChild(document.createElement('div')),
+    document.body.appendChild(document.createElement("div")),
   )
 })
